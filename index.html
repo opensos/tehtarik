@@ -7,26 +7,25 @@
 </head>
 
 <body>
-   <div id="app" class="container">
+    <div id="app" class="container">
     
     <section>
-       
-       
         <b-image
-            src="https://picsum.photos/id/1062/800/400"
-            ratio="16by9"
+            :src="https://picsum.photos/id/1062/800/400"
+            ratio="2by1"
         >
             <template #placeholder>
                 <b-skeleton
 class="skeleton-placeholder"
-height="1000%"
+height="100%"
                 ></b-skeleton>
             </template>
         </b-image>
     </section>
 
 </div>
-
+                
+ 
     <script src="https://unpkg.com/vue@2"></script>
     <!-- Full bundle -->
     <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
