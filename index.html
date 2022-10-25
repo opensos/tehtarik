@@ -6,15 +6,26 @@
 </head>
 
 <body>
-// to center an image horizontally with bulma:
-// add has-text-centered to the parent
-// add is-inline-block to the figure tag
+<div id="app" class="container">
+    
+    <section>
+       
+       
+        <b-image
+            src="https://picsum.photos/id/1062/800/400"
+            ratio="16by9"
+        >
+            <template #placeholder>
+                <b-skeleton
+class="skeleton-placeholder"
+height="1000%"
+                ></b-skeleton>
+            </template>
+        </b-image>
+    </section>
 
-<div class="has-text-centered">
-        <figure class="image is-64x64 is-inline-block">
-            <img class="is-rounded" src="https://unsplash.it/64"/>
-        </figure>
 </div>
+                
 </body>
 
 </html>
