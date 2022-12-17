@@ -1,0 +1,10 @@
+name: "Heather"
+description: "A Hyperminimal Jekyll Theme"
+author: "Jxnblk"
+
+# url: "http://localhost:4000"
+url: "https://mamak.cc/tehtarik"
+
+exclude: [README.md, Rakefile]
+paginate: 16
+permalink: /:title
