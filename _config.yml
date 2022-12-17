@@ -1,10 +1,22 @@
-name: "Heather"
-description: "A Hyperminimal Jekyll Theme"
-author: "Jxnblk"
+# Dependencies
+markdown:         redcarpet
+pygments:         true
 
-# url: "http://localhost:4000"
-url: "https://mamak.cc/tehtarik"
+# Permalinks
+permalink:        pretty
 
-exclude: [README.md, Rakefile]
-paginate: 16
-permalink: /:title
+# Setup
+title:            Poole
+tagline:          'The Jekyll Butler.'
+description:      'A diligent and noble steward for building Jekyll sites.'
+url:              http://mamak.cc/tehtarik
+
+author:
+  name:           'Mark Otto'
+  url:            https://twitter.com/mdo
+
+paginate:         5
+
+# Custom vars
+github:
+  repo:           https://github.com/poole/www

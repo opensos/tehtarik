@@ -1,32 +1,17 @@
-# Heather
-A Hyperminimal Jekyll Theme
+# Poole site
 
-http://jxnblk.github.io/Heather/
+Homepage for everything related to [Poole](https://github.com/poole/poole).
 
-## About Jekyll
-Jekyll is a static site generator that plays nicely with Github pages and is extremely quick to set up.
 
-Read more about Jekyll: http://jekyllrb.com/
+## Author
 
-## Get Started
-Once you have Jekyll set up, the first thing you'll want to do is edit the `_config.yml` file. Change the name, description, author and url. An example localhost url is commented out for conveniently switching between local and production environments.
+**Mark Otto**
+- <https://github.com/mdo>
+- <https://twitter.com/mdo>
 
-    name: "Heather"
-    description: "A Hyperminimal Jekyll Theme"
-    author: "Jxnblk"
 
-    # url: "http://localhost:4000"
-    url: "http://jxnblk.github.io/Heather"
+## License
 
-    exclude: [README.md, Rakefile]
-    paginate: 16
-    permalink: /:title
+Open sourced under the [MIT license](LICENSE.md).
 
-## Creating a Post
-Once you've customized the settings, use the `_posts/2103-01-01-template.md` file as a starting point for creating a post. Rename the file to reflect the date and title of your post. Open the file, change the title and write your own content.
-
----
-
-MIT License
-http://opensource.org/licenses/MIT
-
+<3
