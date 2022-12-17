@@ -1,0 +1,152 @@
+@import "syntax";
+
+$github: #333333;
+$twitter: #1da1f2;
+$facebook: #3b5998;
+$google: #dd4b39;
+$pinterest: #bd081c;
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin-top: 52px;
+}
+
+#app {
+  flex: 1 0 auto;
+}
+
+.media-content {
+  overflow: hidden;
+}
+
+.text-github, a.navbar-item.text-github:hover {
+  color: $github;
+}
+
+.text-twitter, a.navbar-item.text-twitter:hover {
+  color: $twitter;
+}
+
+.text-facebook, a.navbar-item.text-facebook:hover {
+  color: $facebook;
+}
+
+.is-github {
+  background-color: $github;
+}
+
+.is-twitter {
+  background-color: $twitter;
+}
+
+.is-facebook {
+  background-color: $facebook;
+}
+
+.is-google {
+  background-color: $google;
+}
+
+.is-pinterest {
+  background-color: $pinterest;
+}
+
+.button {
+  &.is-github,
+  &.is-twitter,
+  &.is-facebook,
+  &.is-google,
+  &.is-pinterest {
+    border-color: transparent;
+    color: white;
+  }
+}
+
+.task-list-item-checkbox {
+  margin-right: 5px;
+}
+
+.task-list-item {
+  list-style: none;
+}
+
+// .content {
+//   h1::before {
+//     content: "#";
+//     @extend %header-hashtag;
+//   }
+//   h2::before {
+//     content: "##";
+//     @extend %header-hashtag;
+//   }
+//   h3::before {
+//     content: "###";
+//     @extend %header-hashtag;
+//   }
+//   h4::before {
+//     content: "####";
+//     @extend %header-hashtag;
+//   }
+//   h5::before {
+//     content: "#####";
+//     @extend %header-hashtag;
+//   }
+//   h6::before {
+//     content: "######";
+//     @extend %header-hashtag;
+//   }
+// }
+
+.message-body .media {
+  img.avatar {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+  blockquote {
+    background-color: transparent;
+    border-left: none;
+    padding: 0 1.5em 0.5em;
+    color: grey;
+    font-size: 1.2rem;
+    &::before {
+      content: "\2014\2014\2014";
+    }
+  }
+  a:not(.button):not(.tag) {
+    text-decoration: none;
+  }
+}
+
+.bd-special-shadow {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(transparent));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), transparent);
+  height: 8px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: center top;
+  transform-origin: center top;
+}
+
+@media screen and (max-width: 1023px) {
+  .bd-is-clipped-touch {
+    overflow: hidden !important;
+  }
+}
+
+#shadowed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, .5);
+}
