@@ -1,37 +1,37 @@
-# Jekyll Tailwindcss Starter
+---
+title: Project
+layout: page
+permalink: /project.html
+markdown: prose
+---
 
-![](https://img.shields.io/github/issues/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/forks/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/stars/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/license/shenlu89/jekyll-tailwindcss-starter)
+### Jekyll Tailwindcss Starter
 
 A dead simple, comprehensive Jekyll boilerpalte styling with Tailwind CSS.
 
-![](assets/images/showcase.png)
-
-## Features
+### Features
 
 - Integrated with [Tailwind CSS](https://tailwindcss.com/) v2.2+, including [PostCSS](https://postcss.org/), [PurgeCSS](https://purgecss.com/)
-- Compatiable with **Mordern Browsers** except **IE 11+**
+- Compatiable with [GitHub Pages](https://pages.github.com/) and **Mordern Browsers** except **IE 11+**
 - **Syntax Highlighting** with [Typography](https://github.com/tailwindlabs/tailwindcss-typography)
 - Commenting support powered by [Disqus](https://disqus.com/)
 - Optimized for search engines.
 - Support **Google Analytics**
 - **Latex** syntax through [Mathjax](https://www.mathjax.org/)
 
-## Philosophy
+### Philosophy
 
 1. Styling as simple as possible
 2. Features as many as possible
 3. Support modern browsers only
 4. Easy to develop/refactor based on it
 
-## Requirements
+### Prerequisites
 
 - [Node](https://nodejs.org/en/) >= 12
 - [Jekyll](https://jekyllrb.com/) >= 4
 
-## Install && Usage
+### Installation
 
 ```sh
 # Pull down Jekyll Tailwindcss Starter
@@ -46,17 +46,18 @@ yarn css:build
 yarn jekyll:serve
 ```
 
-## Contributing
+### Source code
 
-You want to help? Welcome to contribute:
+The code of **Jekyll Tailwindcss Starter** is available at my github repo [jekyll-tailwindcss-starter](https://github.com/jekyll-tailwindcss-starter).
 
-1. [Create an issue](https://github.com/shenlu89/jekyll-tailwindcss-starter/issues/new/choose) with some constructive criticism
-2. Fork it ( [http://github.com/shenlu89/jekyll-tailwindcss-starter/fork](http://github.com/shenlu89/jekyll-tailwindcss-starter/fork) )
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create new Pull Request
+### Contributing
 
-## License
+1. Fork it ( [http://github.com/shenlu89/jekyll-tailwindcss-starter/fork](http://github.com/shenlu89/jekyll-tailwindcss-starter/fork) )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+### License
 
 [MIT](https://github.com/shenlu89/jekyll-tailwindcss-starter/blob/main/LICENSE)
