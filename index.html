@@ -2,4 +2,12 @@
 layout: default
 ---
 
-<h1 class="text-black text-4xl font-semibold">Jekyll Starter Tailwind</h1>
+<h1 class="text-black text-center text-4xl font-semibold">Jekyll Starter Tailwind</h1>
+
+		{% for post in site.posts %}
+
+			<li>
+				<a href="{{ post.url }}">{{ post.title }}</a>
+			</li>
+
+		{% endfor %}
