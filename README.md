@@ -1,62 +1,74 @@
-# Jekyll Tailwindcss Starter
+# Jekyll Starter Tailwind
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
-![](https://img.shields.io/github/issues/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/forks/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/stars/shenlu89/jekyll-tailwindcss-starter)
-![](https://img.shields.io/github/license/shenlu89/jekyll-tailwindcss-starter)
+A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https://jekyllrb.com/) that includes:
+* A barebones Jekyll starter theme
+* A Gulpfile that does the following:
 
-A dead simple, comprehensive Jekyll boilerpalte styling with Tailwind CSS.
+    * Compiles Tailwind
+    * Strips out unused CSS using Tailwind's `purge` option
+    * Runs [Autoprefixer](https://github.com/postcss/autoprefixer)
+    * Minifies your CSS
+    * Compiles Jekyll
+    * Runs [Browsersync](https://www.browsersync.io/) for local development
 
-![](assets/images/showcase.png)
+## What is Tailwind?
+>"Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."
+–[Tailwind](https://tailwindcss.com)
 
-## Features
-
-- Integrated with [Tailwind CSS](https://tailwindcss.com/) v2.2+, including [PostCSS](https://postcss.org/), [PurgeCSS](https://purgecss.com/)
-- Compatiable with **Mordern Browsers** except **IE 11+**
-- **Syntax Highlighting** with [Typography](https://github.com/tailwindlabs/tailwindcss-typography)
-- Commenting support powered by [Disqus](https://disqus.com/)
-- Optimized for search engines.
-- Support **Google Analytics**
-- **Latex** syntax through [Mathjax](https://www.mathjax.org/)
-
-## Philosophy
-
-1. Styling as simple as possible
-2. Features as many as possible
-3. Support modern browsers only
-4. Easy to develop/refactor based on it
+## What is Jekyll?
+>"Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories."
+–[Jekyll](https://jekyllrb.com/)
 
 ## Requirements
+* [Bundler](http://bundler.io/)
+* [Jekyll](https://jekyllrb.com/)
+* [Node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+* [Ruby](https://www.ruby-lang.org/en/)
 
-- [Node](https://nodejs.org/en/) >= 12
-- [Jekyll](https://jekyllrb.com/) >= 4
+## Get started
+* `bundle install` to install Ruby gems
+* `npm ci` to install npm packages listed in `package-lock.json`
+* `npm run start` or `npm run dev` to compile the site with development settings and run BrowserSync
 
-## Install && Usage
+## Build your site
+* `npm run build:dev` to compile the site with development settings
+* `npm run build:production` or `npm run build` to compile the site for production
 
-```sh
-# Pull down Jekyll Tailwindcss Starter
-git clone https://github.com/shenlu89/jekyll-tailwindcss-starter.git
-# Get into the folder
-cd jekyll-tailwindcss-starter
-# Install node dependencies
-yarn
-# Generate main.css via tailwindcss
-yarn css:build
-# Preview the website
-yarn jekyll:serve
-```
 
-## Contributing
+## Deploy
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/taylorbryant/jekyll-starter-tailwind)
 
-You want to help? Welcome to contribute:
-
-1. [Create an issue](https://github.com/shenlu89/jekyll-tailwindcss-starter/issues/new/choose) with some constructive criticism
-2. Fork it ( [http://github.com/shenlu89/jekyll-tailwindcss-starter/fork](http://github.com/shenlu89/jekyll-tailwindcss-starter/fork) )
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create new Pull Request
+Note: By default, Netlify uses `jekyll build` as the build command. The included `netlify.toml` file will override it to use `npm run build`.
 
 ## License
+[MIT](https://github.com/taylorbryant/jekyll-starter-tailwind/blob/master/LICENSE.md)
 
-[MIT](https://github.com/shenlu89/jekyll-tailwindcss-starter/blob/main/LICENSE)
+## How you can help
+Enjoying Jekyll Starter Tailwind and want to help? You can:
+* [Create an issue](https://github.com/taylorbryant/jekyll-starter-tailwind/issues/new) with some constructive criticism
+* [Submit a pull request](https://github.com/taylorbryant/jekyll-starter-tailwind/compare) with some improvements to the project
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt=""/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/taylorbryant/jekyll-starter-tailwind/commits?author=phproberto" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/benmp"><img src="https://avatars3.githubusercontent.com/u/9081154?v=4" width="100px;" alt=""/><br /><sub><b>benmp</b></sub></a><br /><a href="https://github.com/taylorbryant/jekyll-starter-tailwind/commits?author=benmp" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jd4no"><img src="https://avatars0.githubusercontent.com/u/15043675?v=4" width="100px;" alt=""/><br /><sub><b>Joey Defourneaux</b></sub></a><br /><a href="https://github.com/taylorbryant/jekyll-starter-tailwind/commits?author=jd4no" title="Code">💻</a></td>
+    <td align="center"><a href="https://shime.sh"><img src="https://avatars3.githubusercontent.com/u/703563?v=4" width="100px;" alt=""/><br /><sub><b>Hrvoje Šimić</b></sub></a><br /><a href="https://github.com/taylorbryant/jekyll-starter-tailwind/commits?author=shime" title="Code">💻</a></td>
+    <td align="center"><a href="https://alejof.dev"><img src="https://avatars2.githubusercontent.com/u/7116453?v=4" width="100px;" alt=""/><br /><sub><b>Alejandro Figueroa</b></sub></a><br /><a href="https://github.com/taylorbryant/jekyll-starter-tailwind/commits?author=alexphi" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

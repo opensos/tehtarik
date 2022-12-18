@@ -1,22 +1,15 @@
-# site
-url: https://mamak.cc/tehtarik
-author: shenlu89
-title: "Jekyll Tailwindcss Starter" # the name of your site, e.g. ACME Corp.
+title: Tailwind Jekyll Starter Kit
+description: A starter kit for using Tailwind with Jekyll
 
-# markdown
-markdown: kramdown
-highlighter: rouge
-
-# paginator
-plugins:
-  - jekyll-paginate
-  - jekyll-seo-tag
-
-paginate: 2
-paginate_path: "/page:num"
-
-# google analytics
-google_analytics_id: "Google Analytics ID"
-
-# other configs
-exclude: ["CNAME", "README.md"]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.babel.js
+  - LICENSE.md
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
+  - src
+  - tailwind.config.js
+  - netlify.toml
