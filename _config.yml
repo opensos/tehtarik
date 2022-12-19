@@ -1,6 +1,6 @@
 # change the followings to match your Github username and repo name
 baseurl: "/tehtarik" # the name of your github repo
-url: "https://opensos.github.io" # the url of your github pages
+url: "https://mamak.cc" # the url of your github pages
 
 # site information used in page title, meta data etc.
 title: "Tailpages: Tailwind + Github Pages"
