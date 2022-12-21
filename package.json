@@ -1,18 +1,16 @@
 {
-  "name": "tailpages",
+  "name": "jekyll-atlantic",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/harrywang/tailpages.git",
-  "author": "Harry Wang <harryjwang@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.0",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.5",
-    "postcss-cli": "^9.1.0",
-    "tailwindcss": "^3.0.12"
-  },
+  "description": "A Jekyll Tailwind starter blog",
   "dependencies": {
-    "@fontsource/inter": "^4.5.1"
-  }
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.2.6",
+    "cssnano": "^5.0.6",
+    "postcss": "^8.3.6",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6",
+    "tailwindcss": "^2.2.4"
+  },
+  "author": "rob@zerostatic.io",
+  "license": "MIT"
 }
