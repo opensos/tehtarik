@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    {% include meta.html %}
-
-    <link rel="icon" href="{{ '/favicon.png' | relative_url }}">
-    <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
-  </head>
-  <body class="page {{page.bodyClass}}">
-    {% include mobile-menu.html %}
-    <div class="container mx-auto px-6 md:px-4">
-      {% include header.html %}
-      {{content}}
-      {% include footer.html %}
-    </div>
-    {% include google-analytics.html %}
-    <script type="text/javascript" src="{{ '/assets/js/hamburger.js' | relative_url }}"></script>
-  </body>
+<html>
+    {% include head.html %}
+    <body class="is-offset {% unless site.typekit_kit_id %}wf-inactive{% endunless %}">
+        {% include header.html %}
+        <section role="main">
+            {{ content }}
+        </section>
+        {% include footer.html %}
+        <script type="text/javascript" src="{{ site.baseurl }}/js/galileo.js"></script>
+    </body>
 </html>

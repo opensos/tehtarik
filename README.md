@@ -1,103 +1,44 @@
-# Jekyll Atlantic - Jekyll + Tailwind Starter Theme
+Galileo Theme
+---
 
-Atlantic is a beutiful minimal blog theme for Jekyll. It is an excellent Jekyll + Tailwind boilerplate to start from.
+Another damned theme for Jekyll.
 
-[Live Demo](https://jekyll-atlantic.netlify.app/) | [Zerostatic Themes](https://www.zerostatic.io/theme/jekyll-atlantic/)
+![The Galileo Theme](https://cloud.githubusercontent.com/assets/185649/11737785/b998bd0c-a002-11e5-9c93-0ac83917f32d.png)
 
-![Jekyll Atlantic Theme screenshot](https://www.zerostatic.io/theme/jekyll-atlantic/jekyll-atlantic-screenshot.png)
+Landing somewhere between a scholarly publication and an adventurers notebook, the Galileo theme presents your words & photographs in a handsome, agreeable manner.
 
-## Theme features
+It is well behaved on both mobile & desktop and radically minimal in its footprint. Charged and ready for deployment to Github Pages.
 
-<img width="18" height="18" src="https://jamstackthemes.dev/images/icons/jekyll.svg" /> [Jekyll](https://jekyllrb.com/) 4.1+
-<img width="18" height="18" src="https://jamstackthemes.dev/images/icons/tailwind.svg" /> [Tailwind CSS](https://tailwindcss.com/docs) v2.2+
-<img width="18" height="18" src="https://jamstackthemes.dev/images/icons/postcss.svg" /> [PostCSS](https://postcss.org/) 8.3+
+### In the wild
 
-- Uses PostCSS with autoprefixer, nested css, cssnano (minify css) 
-- Works with native Jekyll commands `jekyll serve` and `jekyll build`
-- Correctly uses Tailwind to purge CSS in production
-- Full blog functionality
-- Beautfifuly designed responsive blog and post layouts
-- Blog categories
-- Blog authors (multiple)
-- Blog pagination
-- Ready to deploy to Netlify
-- Responsive design
-- Responsive menu
-- 100/100 Google Lighthouse speed score ⚡
-- 100/100 Google Lighthouse seo score 🏆
-- 94/100 Google Lighthouse accessibility score (but this is just because of the green text color contrast)
-- Page size is 10KB without images, can you believe it?? 🔥
-- Robust example content included
-- Royalty free illustrations included
-- Netlify & Github Pages ready
+Demo [here](http://travelog.io/galileo-theme/). I'm so damned fond of this theme that I also use it on [my own blog](http://travelog.io/).
 
-## Installation
+### Installation
 
-### Installing Ruby & Jekyll
- 
-If this is your first time using Jekyll, please follow the [Jekyll docs](https://jekyllrb.com/docs/installation/) and make sure your local environment (including Ruby) is setup correctly.
+- Install Jekyll: `gem install jekyll`
+- [Fork this repository](https://github.com/rowanoulton/galileo-theme/fork)
+- Clone it: `git clone https://github.com/YOUR-USER/galileo-theme`
+- Run the jekyll server: `jekyll serve -w`
 
-### Installing Theme
+Observe the results at <http://localhost:4000>.
 
-Download or clone the theme.
+### Customisation
 
-To run the theme locally, navigate to the theme directory and run:
+Make changes in [_config.yml](https://github.com/rowanoulton/galileo-theme/blob/master/_config.yml), ye damned heathens.
 
-To use Tailwind and PostCSS:
+#### A note about fonts
 
-```
-npm install
-```
+I've employed [Typekit](https://typekit.com/) to load both "[Adobe Caslon Pro](https://typekit.com/fonts/adobe-caslon-pro)" & "[LTC Bodoni 175](https://typekit.com/fonts/ltc-bodoni-175)". To make use of these with your own Typekit account, publish a kit and enter the ID into the Jekyll config.
 
-```
-bundle install
-``` 
+This _is_ optional. If you don't want to use Typekit, well _fine_, just leave the Typekit Kit ID blank. You'll need to elect and specify substitute fonts [here](https://github.com/rowanoulton/galileo-theme/blob/master/css/screen.scss#L7) and [here](https://github.com/rowanoulton/galileo-theme/blob/master/css/screen.scss#L8).
 
-To start the Jekyll local development server.
+### Deployment
 
-```
-bundle exec jekyll serve
-``` 
+This theme is built to be deployed easily to [GitHub Pages](https://pages.github.com/).
 
-To build the theme.
- 
-```
-bundle exec jekyll build
-```
-
-## Deployment
-
-### Netlify
-
-Use Netlify to deploy this theme. This theme contains a valid and tested `netlify.toml`
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/zerostaticthemes/jekyll-atlantic-theme)
-
-### Github Pages
-This theme has been tested to work with Github Pages (and Github Project Pages). When using Github Pages you will need to update the `baseurl` in the `_config.yml` otherwise all the css, images and paths will be broken.
-
-For example the site https://zerostaticthemes.github.io/jekyll-atlantic-theme would have `baseurl: "/jekyll-atlantic-theme/"`
-
-## Extras
 
 ### License
 
-- Don't create ports or new versions of this theme without asking me
-- You can't re-distribute or re-sell this theme as your own template
+[MIT](https://github.com/rowanoulton/galileo-theme/blob/master/LICENSE).
 
-### Credits 
-
-- Beautiful royalty free Illustrations by Icons8 - https://icons8.com/illustrations/style--pixeltrue
-- Stock images by Unsplash - https://unsplash.com/
-- Feature icons by Noun Project - https://thenounproject.com/
-
-### Other Jekyll Themes by Zerostatic
-
-- [Jekyll Serif](https://github.com/zerostaticthemes/jekyll-serif-theme) - Open Source
-- [Jekyll Advance](https://www.zerostatic.io/theme/jekyll-advance/) - Premium
-- [Jekyll Curate](https://github.com/zerostaticthemes/jekyll-curate) - Premium
-- [Jekyll Origin](https://www.zerostatic.io/theme/jekyll-origin/) - Premium
-
-🇦🇺 **Made in Australia** by Robert Austin - Support our work - **Star this repo** ⭐
-
-<a href="https://www.buymeacoffee.com/zerostatic" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+Do whatever you damn well please with it. I'm always glad to hear what folks are doing with it though — let me know on [Twitter](https://twitter.com/rowanoulton).
