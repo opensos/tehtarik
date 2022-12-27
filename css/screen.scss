@@ -4,11 +4,11 @@
 @charset "utf-8";
 
 // Typography
-$base-font-family: "adobe-caslon-pro", "Adobe Caslon Pro", serif;
-$caption-font-family: "ltc-bodoni-175", "Libre Baskerville", serif;
-$banner-font-family: "Sanchez", serif;
-$title-font-family: "Libre Baskerville", serif;
-$base-font-size:   18px;
+$base-font-family: "menlo", "Courier New", monospace;
+$caption-font-family: "menlo", "Courier New", monospace;
+$banner-font-family: "menlo", "Courier New", monospace;
+$title-font-family: "menlo", "Courier New", monospace;
+$base-font-size:   12px;
 $base-font-weight: 400;
 $base-line-height: 1;
 
@@ -17,12 +17,12 @@ $text-color:       #222;
 $caption-text-color: #444;
 $border-color: #979797;
 $background-color: #fefefe;
-$content-width:    750px;
+$content-width:    850px;
 $hover-color: #443E40;
 $legal-color: #818181;
 
 // Layout
-$layout-width: 750px;
+$layout-width: 850px;
 
 // Breakpoints
 $desktop-breakpoint: $layout-width / 0.9;
