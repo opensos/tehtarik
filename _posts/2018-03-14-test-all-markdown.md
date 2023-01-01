@@ -46,7 +46,7 @@ Alternatively,
 
 If you want to embed images, this is how you do it:
 
-![name of the image][https://mamak.cc/tehtarik/img/Visual.jpg]
+![name of the image](https://mamak.cc/tehtarik/img/Visual.jpg)
 
 # Structured documents
 
