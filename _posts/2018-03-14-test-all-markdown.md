@@ -46,8 +46,7 @@ Alternatively,
 
 If you want to embed images, this is how you do it:
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-![kereta](https://images.unsplash.com/photo-1669625452167-ba1ce7606833?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+![name of the image][{{site.url}}/img/Visual.jpg]
 
 # Structured documents
 
