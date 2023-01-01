@@ -10,6 +10,7 @@ disable_title: true
     {% for post in paginator.posts %}
       <article class="media">
         <div class="media-content is-centered">
+			<figure>
           <h1 class="title">
             <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
           </h1>
@@ -20,7 +21,7 @@ disable_title: true
             <div class="field">
               {{ post.excerpt }}
             </div>
-            
+		</figure>
           </div>
         </div>
       </article>
