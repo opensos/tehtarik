@@ -9,7 +9,7 @@ disable_title: true
   <div class="container is-centered">
     {% for post in paginator.posts %}
       <article class="media">
-        <div class="media-content">
+        <div class="media-content is-centered">
           <h1 class="title">
             <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
           </h1>
