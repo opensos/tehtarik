@@ -202,7 +202,7 @@ a:focus {
 
 .item:nth-child(10) .item__img-wrap {
 	--aspect-ratio: 60/75;
-	--image: url(https://tympanus.net/Tutorials/SmoothScrollAnimations/img/10.jpg);
+	--image: url(/img/10.jpg);
 }
 .item__img {
 	--overflow: 40px;
