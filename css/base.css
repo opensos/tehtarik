@@ -202,7 +202,7 @@ a:focus {
 
 .item:nth-child(10) .item__img-wrap {
 	--aspect-ratio: 60/75;
-	--image: url(/img/10.jpg);
+	--image: url(https://images.unsplash.com/photo-1676389368290-4ee81b4f0002?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1976&q=80);
 }
 .item__img {
 	--overflow: 40px;
