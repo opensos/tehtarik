@@ -1,34 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Res Images Example</title>
-    <!-- Include Tailwind CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
-  </head>
-  <body class="bg-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1000/800/800" alt="Image 1">
-        </div>
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1002/800/800" alt="Image 2">
-        </div>
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1004/800/800" alt="Image 3">
-        </div>
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1006/800/800" alt="Image 4">
-        </div>
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1008/800/800" alt="Image 5">
-        </div>
-        <div class="flex justify-center items-center p-4">
-          <img class="w-full h-auto" src="https://picsum.photos/id/1010/800/800" alt="Image 6">
-        </div>
-      </div>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Images with TailwindCSS</title>
+  <!-- Load TailwindCSS from CDN -->
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+  <div class="max-w-2xl mx-auto px-4 py-8">
+    <img class="mx-auto max-w-full h-auto" src="https://source.unsplash.com/random/800x800" alt="Image">
+    <img class="mx-auto max-w-full h-auto mt-4" src="https://source.unsplash.com/random/800x800" alt="Image">
+    <img class="mx-auto max-w-full h-auto mt-4" src="https://source.unsplash.com/random/800x800" alt="Image">
+  </div>
+</body>
+
 </html>
