@@ -3,31 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TailwindCSS Image Gallery</title>
-    <!-- TailwindCSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <title>Minimalist Website</title>
+    <!-- Include Tailwind CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
   </head>
-  <body class="bg-white">
-    <!-- Header -->
-    <header class="bg-gray-800 text-white p-4">
-      <h1 class="text-xl font-bold">Image Gallery</h1>
-    </header>
-
-    <!-- Image Gallery -->
-    <main class="container mx-auto p-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 1">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 2">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 3">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 4">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 5">
-        <img class="w-full object-cover object-center" src="https://picsum.photos/800/800" alt="Image 6">
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-4">
-      <p>&copy; 2023 TailwindCSS Image Gallery</p>
-    </footer>
+  <body class="bg-gray-100">
+    <div class="flex flex-col items-center justify-center h-screen">
+      <img class="max-w-full" src="https://picsum.photos/id/1020/1200/800" alt="Image 1">
+      <img class="max-w-full" src="https://picsum.photos/id/1030/1200/800" alt="Image 2">
+      <img class="max-w-full" src="https://picsum.photos/id/1040/1200/800" alt="Image 3">
+    </div>
   </body>
 </html>
