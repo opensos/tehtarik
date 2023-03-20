@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Big Images with TailwindCSS</title>
-  <!-- Load TailwindCSS from CDN -->
-  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-</head>
-
-<body class="bg-gray-100">
-  <div class="max-w-2xl mx-auto px-4 py-8">
-    <img class="mx-auto max-w-full h-auto" src="https://source.unsplash.com/random/800x800" alt="Image">
-    <img class="mx-auto max-w-full h-auto mt-4" src="https://source.unsplash.com/random/800x800" alt="Image">
-    <img class="mx-auto max-w-full h-auto mt-4" src="https://source.unsplash.com/random/800x800" alt="Image">
-  </div>
-</body>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Images Centered</title>
+    <!-- Load TailwindCSS from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.17/dist/tailwind.min.css">
+  </head>
+  <body class="bg-white">
+    <div class="min-h-screen flex items-center justify-center">
+      <img class="max-w-full h-auto" src="https://via.placeholder.com/1000x1000" alt="Big Image">
+    </div>
+  </body>
 </html>
