@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Big Images</title>
-  <link rel="stylesheet" href="https://cdn.tailwindcss.com" />
+  <title>Images with Skelet CSS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skelet/1.1.2/skelet.min.css" />
 </head>
-<body class="flex flex-col items-center justify-center h-screen">
-  <div class="max-w-4xl w-full">
-    <img class="w-full h-auto" src="your-image-source.jpg" alt="Your Image" />
-    <img class="w-full h-auto" src="your-image-source.jpg" alt="Your Image" />
-    <img class="w-full h-auto" src="your-image-source.jpg" alt="Your Image" />
-    <img class="w-full h-auto" src="your-image-source.jpg" alt="Your Image" />
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <img src="your-image-source.jpg" alt="Your Image" class="u-full-width" />
+      </div>
+      <div class="column">
+        <img src="your-image-source.jpg" alt="Your Image" class="u-full-width" />
+      </div>
+    </div>
   </div>
 </body>
 </html>
