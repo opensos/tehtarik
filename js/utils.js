@@ -1,65 +1,78 @@
 const imagesLoaded = require('imagesloaded');
 
-/**
- * Linear interpolation
- * @param {Number} a - first value to interpolate
- * @param {Number} b - second value to interpolate 
- * @param {Number} n - amount to interpolate
- */
- const lerp = (a, b, n) => (1 - n) * a + n * b;
-
- /**
-  * Gets the cursor position
-  * @param {Event} ev - mousemove event
-  */
- const getCursorPos = ev => {
-     return { 
-         x : ev.clientX, 
-         y : ev.clientY 
-     };
- };
-
-/**
- * Preload images
- * @param {String} selector - Selector/scope from where images need to be preloaded. Default is 'img'
- */
+// Preload images
 const preloadImages = (selector = 'img') => {
     return new Promise((resolve) => {
         imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
     });
 };
 
-/**
- * Wraps the elements of an array.
- * @param {Array} arr - the array of elements to be wrapped
- * @param {String} wrapType - the type of the wrap element ('div', 'span' etc)
- * @param {String} wrapClass - the wrap class(es)
- */
- const wrapLines = (arr, wrapType, wrapClass) => {
-    arr.forEach(el => {
+const calcWinsize = () => {
+    return { width: window.innerWidth, height: window.innerHeight };
+};
+
+const getScrollValues = () => {
+    const supportPageOffset = window.pageXOffset !== undefined;
+    const isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+    const x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
+    const y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+    return {x,y};
+}
+
+// wrap each element of an array
+// elems - the array of elements to wrap
+// wrapType - type of wrapper ('div', 'span' etc)
+// wrapClass - wrapper class(s) 
+const wrapLines = (elems, wrapType, wrapClass) => {
+    elems.forEach(char => {
+        // add a wrap for every char (overflow hidden)
         const wrapEl = document.createElement(wrapType);
         wrapEl.classList = wrapClass;
-        el.parentNode.appendChild(wrapEl);
-        wrapEl.appendChild(el);
+        char.parentNode.appendChild(wrapEl);
+        wrapEl.appendChild(char);
     });
 }
 
-/**
- * Checks if an element is in the viewport
- * @param {Element} elem - the element to be checked
- */
- const isInViewport = elem => {
-    var bounding = elem.getBoundingClientRect();
-    return (
-        (bounding.bottom >= 0 && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) || bounding.top >= 0 && bounding.top <= (window.innerHeight || document.documentElement.clientHeight)) &&
-        (bounding.right >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) || bounding.left >= 0 && bounding.left <= (window.innerWidth || document.documentElement.clientWidth))
-    );
-};
+const adjustedBoundingRect = el => {
+    var rect = el.getBoundingClientRect();
+    var style = getComputedStyle(el);
+    var tx = style.transform;
+  
+    if (tx) {
+      var sx, sy, dx, dy;
+      if (tx.startsWith('matrix3d(')) {
+        var ta = tx.slice(9,-1).split(/, /);
+        sx = +ta[0];
+        sy = +ta[5];
+        dx = +ta[12];
+        dy = +ta[13];
+      } else if (tx.startsWith('matrix(')) {
+        var ta = tx.slice(7,-1).split(/, /);
+        sx = +ta[0];
+        sy = +ta[3];
+        dx = +ta[4];
+        dy = +ta[5];
+      } else {
+        return rect;
+      }
+  
+      var to = style.transformOrigin;
+      var x = rect.x - dx - (1 - sx) * parseFloat(to);
+      var y = rect.y - dy - (1 - sy) * parseFloat(to.slice(to.indexOf(' ') + 1));
+      var w = sx ? rect.width / sx : el.offsetWidth;
+      var h = sy ? rect.height / sy : el.offsetHeight;
+      return {
+        x: x, y: y, width: w, height: h, top: y, right: x + w, bottom: y + h, left: x
+      };
+    } else {
+      return rect;
+    }
+}
 
-export {
-    lerp,
-    getCursorPos,
+export { 
     preloadImages,
+    calcWinsize,
+    getScrollValues,
     wrapLines,
-    isInViewport,
+    adjustedBoundingRect
 };

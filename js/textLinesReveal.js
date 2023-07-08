@@ -2,121 +2,78 @@ import SplitType from 'split-type';
 import { wrapLines } from './utils';
 import { gsap } from 'gsap';
 
-/**
- * Class representing a text line element that reveals itself by animating its translateY value
- */
 export class TextLinesReveal {
-    // DOM elements
-    DOM = {
-        // main element (a text DOM element)
-        el: null
-    }
-    // Split Type instance
-    SplitTypeInstance;
-    // Checks if the Split Type lines are visible or not
-    isVisible;
-    // Animation timelines
-    inTimeline;
-    outTimeline;
-
-    /**
-     * Constructor.
-     * @param {Element} DOM_el - a text DOM element
-     */
-    constructor(DOM_el) {
+    constructor(animationElems) {
         this.DOM = {
-            el: DOM_el
+            animationElems: Array.isArray(animationElems) ? animationElems : [animationElems]
         };
 
-        this.SplitTypeInstance = new SplitType(this.DOM.el, { types: 'lines' });
-        // Wrap the lines (div with class .oh)
-        // The inner child will be the one animating the transform
-        wrapLines(this.SplitTypeInstance.lines, 'div', 'oh');
-        
+        // array of SplitType instances
+        this.SplitTypeInstances = [];
+        // array of all HTML .line
+        this.lines = [];
+
+        for (const el of this.DOM.animationElems) {
+            const SplitTypeInstance = new SplitType(el, { types: 'lines' });
+            // wrap the lines (div with class .oh)
+            // the inner child will be the one animating the transform
+            wrapLines(SplitTypeInstance.lines, 'div', 'oh');
+            this.lines.push(SplitTypeInstance.lines);
+            // keep a reference to the SplitType instance
+            this.SplitTypeInstances.push(SplitTypeInstance);
+        }
+
         this.initEvents();
     }
-
-    /**
-     * Animates the lines in.
-     * @return {GSAP Timeline} the animation timeline
-     * @param {Boolean} animation - with or without animation.
-     */
-    in(animation = true) {
-        // Lines are visible
+    in() {
+        // lines are visible
         this.isVisible = true;
 
-        gsap.killTweensOf(this.SplitTypeInstance.lines);
-        this.inTimeline = gsap.timeline({defaults: {
-            duration: 1.5, 
-            ease: 'power4.inOut',
-        }})
-        .addLabel('start', 0)
-        .set(this.SplitTypeInstance.lines, {
-            yPercent: 105,
-        }, 'start');
-        
-        if ( animation ) {
-            this.inTimeline.to(this.SplitTypeInstance.lines, {
-                yPercent: 0,
-                stagger: 0.1
-            }, 'start');
-        }
-        else {
-            this.inTimeline.set(this.SplitTypeInstance.lines, {
-                yPercent: 0
-            }, 'start');
-        }
-        
-        return this.inTimeline;
+        // animation
+        gsap.killTweensOf(this.lines);
+        return gsap.timeline({defaults: {duration: 1.2, ease: 'expo'}})
+        .set(this.lines, {
+            y: '150%',
+            rotate: 15
+        })
+        .to(this.lines, {
+            y: '0%',
+            rotate: 0,
+            stagger: 0.04
+        });
     }
-
-    /**
-     * Animates the lines out.
-     * @param {Boolean} animation - with or without animation.
-     * @return {GSAP Timeline} the animation timeline
-     */
-    out(animation = true) {
-        // Lines are invisible
+    out() {
+        // lines are invisible
         this.isVisible = false;
 
-        gsap.killTweensOf(this.SplitTypeInstance.lines);
-        
-        this.outTimeline = gsap.timeline({defaults: {
-            duration: 1.5, 
-            ease: 'power4.inOut'
-        }}).addLabel('start', 0);
-        
-        if ( animation ) {
-            this.outTimeline.to(this.SplitTypeInstance.lines, {
-                yPercent: -105,
-                stagger: 0.02
-            }, 'start');
-        }
-        else {
-            this.outTimeline.set(this.SplitTypeInstance.lines, {
-                yPercent: -105,
-            }, 'start');
-        }
-
-        return this.outTimeline;
+        // animation
+        gsap.killTweensOf(this.lines);
+        return gsap.timeline({
+            defaults: {duration: 0.5, ease: 'expo.in'}
+        })
+        .to(this.lines, {
+            y: '-150%',
+            rotate: -5,
+            stagger: 0.02
+        });
     }
-
-    /**
-     * Initializes some events.
-     */
     initEvents() {
-        // Re-initialize the Split Text on window resize.
         window.addEventListener('resize', () => {
-            // Re-split text
-            // https://github.com/lukePeavey/SplitType#instancesplitoptions-void
-            this.SplitTypeInstance.split();
+            // empty the lines array
+            this.lines = [];
+            // re initialize the Split Text 
+            for (const instance of this.SplitTypeInstances) {
+                // re-split text
+                // https://github.com/lukePeavey/SplitType#instancesplitoptions-void
+                instance.split();
 
-            // Need to wrap again the new lines elements (div with class .oh)
-            wrapLines(this.SplitTypeInstance.lines, 'div', 'oh');
-                
-            // Hide the lines
+                // need to wrap again the new lines elements (div with class .oh)
+                wrapLines(instance.lines, 'div', 'oh');
+                this.lines.push(instance.lines);
+            }
+            // hide the lines
             if ( !this.isVisible ) {
-                gsap.set(this.SplitTypeInstance.lines, {yPercent: -105});
+                gsap.set(this.lines, {y: '-150%'});
             }
         });
     }
