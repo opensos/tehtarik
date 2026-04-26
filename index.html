@@ -28,7 +28,7 @@ title: Home
     {% endfor %}
   ];
 
-  const BATCH = 10;
+  const BATCH = 5;
   let loaded = 0;
   let isLoading = false;
 
@@ -47,10 +47,9 @@ title: Home
         <img src="${photo.src}" alt="${photo.alt}" loading="lazy" style="max-width:100%;height:auto;" />
       </div>
       ${showMeta ? `
-        <div class="text-center mt-2 flex justify-center items-center gap-3">
-          ${hasCaption ? `<p class="text-xs text-gray-500">${photo.caption}</p>` : ''}
-          ${hasCaption && hasDate ? `<span class="text-gray-300 text-xs">·</span>` : ''}
+        <div class="text-center mt-2 flex flex-col items-center gap-1">
           ${hasDate ? `<p class="text-xs text-gray-400">${photo.date}</p>` : ''}
+          ${hasCaption ? `<p class="text-xs text-gray-500">${photo.caption}</p>` : ''}
         </div>
       ` : ''}
     `;
