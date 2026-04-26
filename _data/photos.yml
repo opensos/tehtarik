@@ -3,44 +3,51 @@
 
 - src: /img/Free_Palestine.png
   alt: Free Palestine
-
-- src: /img/siam.jpeg
-  alt: Siamese Dream
-  caption: Siamese Dream
+  date: ""
 
 - src: /img/IMG_3274.jpeg
   alt: Jempol
   caption: jempol
+  date: ""
 
 - src: /img/IMG_2969.jpg
   alt: Ekon
-  caption: repair ekon 14/07/2025
+  caption: repair ekon
+  date: 14/07/2025
 
 - src: /img/IMG_2922.jpg
   alt: Badminton
   caption: badminton
+  date: ""
 
 - src: /img/2DE2D047-B4A8-468D-A0B3-B5554AD3359D_1_102_o.jpeg
   alt: Sky Full of Stars
   caption: A Sky Full of Stars
+  date: ""
 
 - src: /img/2403_0214.jpeg
   alt: Color
   caption: color
+  date: 03/02/2024
 
 - src: /img/IMG_1065.jpg
   alt: IMG 1065
-  caption: 14.10.2023
+  caption: ""
+  date: 14/10/2023
 
 - src: /img/Visual.png
   alt: Visual
+  date: ""
 
 - src: /img/kl.jpg
   alt: KL
+  date: ""
 
 - src: https://travelfoodatlas.com/wp-content/uploads/2022/04/Teh-Tarik-540x720.jpg
   alt: Teh Tarik
+  date: ""
 
 - src: /img/pexels-photo-11997065.jpg
   alt: Dope
   caption: Dope
+  date: ""

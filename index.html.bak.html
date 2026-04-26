@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: random photos
 ---
 
 <!-- Site title -->
@@ -8,10 +8,10 @@ title: Home
   <p class="text-xs text-gray-500">{{ site.title }}</p>
 </div>
 
-<!-- Photo feed -->
+<!-- Photo feed — gambar diappend ke sini oleh JS -->
 <div id="photo-feed" class="space-y-12 pt-10"></div>
 
-<!-- Sentinel -->
+<!-- Sentinel — bila elemen ni visible, batch seterusnya akan load -->
 <div id="sentinel" class="py-8 text-center text-xs text-gray-400">
   <span id="sentinel-label"></span>
 </div>
@@ -22,13 +22,12 @@ title: Home
     {
       src: "{{ photo.src }}",
       alt: "{{ photo.alt }}",
-      caption: "{{ photo.caption }}",
-      date: "{{ photo.date }}"
+      caption: "{{ photo.caption }}"
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
 
-  const BATCH = 10;
+  const BATCH = 5;
   let loaded = 0;
   let isLoading = false;
 
@@ -38,23 +37,14 @@ title: Home
     wrap.style.transform = 'translateY(16px)';
     wrap.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
-    const hasCaption = photo.caption && photo.caption.trim() !== '';
-    const hasDate = photo.date && photo.date.trim() !== '';
-    const showMeta = hasCaption || hasDate;
-
     wrap.innerHTML = `
       <div class="flex justify-center items-center">
         <img src="${photo.src}" alt="${photo.alt}" loading="lazy" style="max-width:100%;height:auto;" />
       </div>
-      ${showMeta ? `
-        <div class="text-center mt-2 flex justify-center items-center gap-3">
-          ${hasCaption ? `<p class="text-xs text-gray-500">${photo.caption}</p>` : ''}
-          ${hasCaption && hasDate ? `<span class="text-gray-300 text-xs">·</span>` : ''}
-          ${hasDate ? `<p class="text-xs text-gray-400">${photo.date}</p>` : ''}
-        </div>
-      ` : ''}
+      ${photo.caption ? `<div class="text-center mt-2"><p class="text-xs text-gray-500">${photo.caption}</p></div>` : ''}
     `;
 
+    // Fade-in bila gambar masuk viewport
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -94,6 +84,7 @@ title: Home
     }, 200);
   }
 
+  // Watch sentinel — trigger loadBatch 200px sebelum user sampai ke bawah
   const sentinelObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) loadBatch();
   }, { rootMargin: '200px' });
