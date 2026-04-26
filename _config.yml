@@ -1,0 +1,19 @@
+title: Teh Tarik
+description: A personal photo journal
+baseurl: "/teh-tarik-theme"
+url: "https://opensos.github.io/teh-tarik-theme"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# Collections (optional — for future blog posts)
+collections:
+  posts:
+    output: true

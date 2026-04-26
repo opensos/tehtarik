@@ -1,98 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Images</title>
-  
-  <!-- Include Tailwind CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+---
+layout: default
+title: Home
+---
 
-  <!-- Apply font-mono to the whole document -->
-  <style>
-    body {
-      font-family: 'IBM Plex Mono', 'Mono', monospace;
-    }
-  </style>
-</head>
-<body class="bg-white">
+<!-- Site title -->
+<div class="mt-6 text-center">
+  <p class="text-xs text-gray-500">{{ site.title }}</p>
+</div>
 
-  <!-- Title -->
-  <div class="mt-6 text-center">
-    <p class="text-xs text-gray-500">Teh Tarik</p>
-  </div>
+<!-- Photo feed — gambar diappend ke sini oleh JS -->
+<div id="photo-feed" class="space-y-12 pt-10"></div>
 
-  
-  <div class="space-y-12 pt-10">
-    
-    <div class="flex justify-center items-center">
-      <img src="/img/Free_Palestine.png" alt="Free Palestine" />
-    </div>
+<!-- Sentinel — bila elemen ni visible, batch seterusnya akan load -->
+<div id="sentinel" class="py-8 text-center text-xs text-gray-400">
+  <span id="sentinel-label"></span>
+</div>
 
-    <!-- Image List -->
-    <div class="flex justify-center items-center">
-      <img src="/img/IMG_3274.jpeg" alt="Jempol" />
-    </div>
-    <div class="text-center">
-      <p class="text-xs text-gray-500">jempol</p>
-    </div>
-	
-    <div class="flex justify-center items-center">
-      <img src="/img/IMG_2969.jpg" alt="Ekon" />
-    </div>
-    <div class="text-center">
-      <p class="text-xs text-gray-500">repair ekon 14/07/2025</p>
-    </div>
+<script>
+  const photos = [
+    {% for photo in site.data.photos %}
+    {
+      src: "{{ photo.src }}",
+      alt: "{{ photo.alt }}",
+      caption: "{{ photo.caption }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
 
-    <div class="flex justify-center items-center">
-      <img src="/img/IMG_2922.jpg" alt="Badminton" />
-    </div>
-    <div class="text-center">
-      <p class="text-xs text-gray-500">badminton</p>
-    </div>
+  const BATCH = 10;
+  let loaded = 0;
+  let isLoading = false;
 
-    <div class="flex justify-center items-center">
-      <img src="/img/2DE2D047-B4A8-468D-A0B3-B5554AD3359D_1_102_o.jpeg" alt="Sky Full of Stars" />
-    </div>
-    <div class="text-center">
-      <p class="text-gray-700">A Sky Full of Stars</p>
-    </div>
+  function createPhotoEl(photo) {
+    const wrap = document.createElement('div');
+    wrap.style.opacity = '0';
+    wrap.style.transform = 'translateY(16px)';
+    wrap.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
-    <div class="flex justify-center items-center">
-      <img src="/img/2403_0214.jpeg" alt="Color" />
-    </div>
-    <div class="text-center">
-      <p class="text-gray-700">color</p>
-    </div>
+    wrap.innerHTML = `
+      <div class="flex justify-center items-center">
+        <img src="${photo.src}" alt="${photo.alt}" loading="lazy" style="max-width:100%;height:auto;" />
+      </div>
+      ${photo.caption ? `<div class="text-center mt-2"><p class="text-xs text-gray-500">${photo.caption}</p></div>` : ''}
+    `;
 
-     <div class="flex justify-center items-center">
-      <img src="/img/IMG_1065.jpg" alt="IMG 1065" />
-    </div>
-    <div class="text-center">
-      <p class="text-gray-800">14.10.2023</p>
-    </div>
+    // Fade-in bila gambar masuk viewport
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
 
-    <div class="flex justify-center items-center">
-      <img src="/img/Visual.png" alt="Visual" />
-    </div>
+    requestAnimationFrame(() => fadeObserver.observe(wrap));
+    return wrap;
+  }
 
-    <div class="flex justify-center items-center">
-      <img src="/img/kl.jpg" alt="KL" />
-    </div>
+  function loadBatch() {
+    if (isLoading || loaded >= photos.length) return;
+    isLoading = true;
 
-    <div class="flex justify-center items-center">
-      <img src="https://travelfoodatlas.com/wp-content/uploads/2022/04/Teh-Tarik-540x720.jpg" alt="Teh Tarik" />
-    </div>
+    const feed = document.getElementById('photo-feed');
+    const label = document.getElementById('sentinel-label');
+    label.textContent = 'loading...';
 
-    <div class="flex justify-center items-center">
-      <img src="/img/pexels-photo-11997065.jpg" alt="Dope" />
-    </div>
-    <div class="text-center">
-      <p class="text-gray-700">Dope</p>
-    </div>
+    const batch = photos.slice(loaded, loaded + BATCH);
 
-  </div>
-  
-</body>
-</html>
+    setTimeout(() => {
+      batch.forEach(photo => feed.appendChild(createPhotoEl(photo)));
+      loaded += batch.length;
+
+      if (loaded >= photos.length) {
+        label.textContent = '— end —';
+        sentinelObserver.disconnect();
+      } else {
+        label.textContent = '';
+      }
+
+      isLoading = false;
+    }, 200);
+  }
+
+  // Watch sentinel — trigger loadBatch 200px sebelum user sampai ke bawah
+  const sentinelObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) loadBatch();
+  }, { rootMargin: '200px' });
+
+  window.addEventListener('load', () => {
+    sentinelObserver.observe(document.getElementById('sentinel'));
+    loadBatch();
+  });
+</script>
