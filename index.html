@@ -83,7 +83,7 @@ title: random photos
       loaded += batch.length;
 
       if (loaded >= photos.length) {
-        label.textContent = '— end — © {{ site.time | date: "%Y" }} {{ site.title }}';
+        label.textContent = '© {{ site.time | date: "%Y" }} {{ site.title }}';
         sentinelObserver.disconnect();
       } else {
         label.textContent = '';
