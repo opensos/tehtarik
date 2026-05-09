@@ -25,4 +25,25 @@
   {{ content }}
 
 </body>
+<footer class="border-t border-zinc-200/40 py-6 dark:border-zinc-800/40">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 text-[11px] text-zinc-400">
+
+    <p>
+      © {{ site.time | date: "%Y" }} {{ site.title }}
+    </p>
+
+    <div class="flex gap-5">
+      <a href="/privacy" class="hover:text-zinc-700 dark:hover:text-zinc-200 transition">
+        Privacy
+      </a>
+      <a href="/terms" class="hover:text-zinc-700 dark:hover:text-zinc-200 transition">
+        Terms
+      </a>
+      <a href="/contact" class="hover:text-zinc-700 dark:hover:text-zinc-200 transition">
+        Contact
+      </a>
+    </div>
+
+  </div>
+</footer>
 </html>
