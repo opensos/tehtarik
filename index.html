@@ -68,22 +68,12 @@ title: random photos
 
   function showTooltip(photo, clientX, clientY) {
     const caption = photo.caption && String(photo.caption).trim();
-    const date = photo.date && String(photo.date).trim();
-    if (!caption && !date) return;
+    if (!caption) return;
 
     tooltip.replaceChildren();
-    if (caption) {
-      const captionEl = document.createElement('div');
-      captionEl.textContent = caption;
-      tooltip.appendChild(captionEl);
-    }
-    if (date) {
-      const dateEl = document.createElement('div');
-      dateEl.textContent = date;
-      dateEl.style.color = '#d1d5db';
-      dateEl.style.fontSize = '0.6875rem';
-      tooltip.appendChild(dateEl);
-    }
+    const captionEl = document.createElement('div');
+    captionEl.textContent = caption;
+    tooltip.appendChild(captionEl);
     tooltip.style.opacity = '1';
     tooltip.style.transform = 'translateY(0)';
     tooltip.setAttribute('aria-hidden', 'false');
@@ -104,7 +94,6 @@ title: random photos
 
     const hasCaption = photo.caption && photo.caption.trim() !== '';
     const hasDate = photo.date && photo.date.trim() !== '';
-    const showMeta = hasCaption || hasDate;
 
     wrap.innerHTML = `
       <div class="flex justify-center items-center">
@@ -112,7 +101,17 @@ title: random photos
       </div>
     `;
 
-    if (showMeta) {
+    if (hasDate) {
+      const dateWrap = document.createElement('div');
+      dateWrap.className = 'text-center mt-2 flex flex-col items-center gap-1';
+      const dateEl = document.createElement('p');
+      dateEl.className = 'text-xs text-gray-400';
+      dateEl.textContent = photo.date;
+      dateWrap.appendChild(dateEl);
+      wrap.appendChild(dateWrap);
+    }
+
+    if (hasCaption) {
       const image = wrap.querySelector('img');
       image.tabIndex = 0;
       image.setAttribute('aria-describedby', 'photo-tooltip');
