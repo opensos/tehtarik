@@ -11,6 +11,9 @@ title: random photos
 <!-- Photo feed -->
 <div id="photo-feed" class="space-y-12 pt-10"></div>
 
+<!-- Floating photo caption -->
+<div id="photo-tooltip" role="tooltip" aria-hidden="true"></div>
+
 <!-- Sentinel -->
 <div id="sentinel" class="py-8 text-center text-xs text-gray-400">
   <span id="sentinel-label"></span>
@@ -20,10 +23,10 @@ title: random photos
   const photos = [
     {% for photo in site.data.photos %}
     {
-      src: "{{ photo.src }}",
-      alt: "{{ photo.alt }}",
-      caption: "{{ photo.caption }}",
-      date: "{{ photo.date }}"
+      src: {{ photo.src | jsonify }},
+      alt: {{ photo.alt | jsonify }},
+      caption: {{ photo.caption | jsonify }},
+      date: {{ photo.date | jsonify }}
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
@@ -31,6 +34,67 @@ title: random photos
   const BATCH = 5;
   let loaded = 0;
   let isLoading = false;
+  const tooltip = document.getElementById('photo-tooltip');
+
+  Object.assign(tooltip.style, {
+    position: 'fixed',
+    zIndex: '50',
+    maxWidth: 'min(18rem, calc(100vw - 24px))',
+    padding: '0.4rem 0.55rem',
+    color: '#fff',
+    background: '#424242',
+    borderRadius: '2px',
+    fontSize: '0.75rem',
+    lineHeight: '1.35',
+    pointerEvents: 'none',
+    opacity: '0',
+    transform: 'translateY(2px)',
+    transition: 'opacity 120ms ease, transform 120ms ease'
+  });
+
+  function positionTooltip(clientX, clientY) {
+    const gap = 12;
+    const margin = 12;
+    const rect = tooltip.getBoundingClientRect();
+    let left = clientX + gap;
+    let top = clientY + gap;
+
+    if (left + rect.width > window.innerWidth - margin) left = clientX - rect.width - gap;
+    if (top + rect.height > window.innerHeight - margin) top = clientY - rect.height - gap;
+
+    tooltip.style.left = `${Math.max(margin, Math.min(left, window.innerWidth - rect.width - margin))}px`;
+    tooltip.style.top = `${Math.max(margin, Math.min(top, window.innerHeight - rect.height - margin))}px`;
+  }
+
+  function showTooltip(photo, clientX, clientY) {
+    const caption = photo.caption && String(photo.caption).trim();
+    const date = photo.date && String(photo.date).trim();
+    if (!caption && !date) return;
+
+    tooltip.replaceChildren();
+    if (caption) {
+      const captionEl = document.createElement('div');
+      captionEl.textContent = caption;
+      tooltip.appendChild(captionEl);
+    }
+    if (date) {
+      const dateEl = document.createElement('div');
+      dateEl.textContent = date;
+      dateEl.style.color = '#d1d5db';
+      dateEl.style.fontSize = '0.6875rem';
+      tooltip.appendChild(dateEl);
+    }
+    tooltip.style.opacity = '1';
+    tooltip.style.transform = 'translateY(0)';
+    tooltip.setAttribute('aria-hidden', 'false');
+    positionTooltip(clientX, clientY);
+  }
+
+  function hideTooltip() {
+    tooltip.style.opacity = '0';
+    tooltip.style.transform = 'translateY(2px)';
+    tooltip.setAttribute('aria-hidden', 'true');
+  }
 
   function createPhotoEl(photo) {
     const wrap = document.createElement('div');
@@ -46,13 +110,43 @@ title: random photos
       <div class="flex justify-center items-center">
         <img src="${photo.src}" alt="${photo.alt}" loading="lazy" style="max-width:100%;height:auto;" />
       </div>
-      ${showMeta ? `
-        <div class="text-center mt-2 flex flex-col items-center gap-1">
-          ${hasDate ? `<p class="text-xs text-gray-400">${photo.date}</p>` : ''}
-          ${hasCaption ? `<p class="text-xs text-gray-500">${photo.caption}</p>` : ''}
-        </div>
-      ` : ''}
     `;
+
+    if (showMeta) {
+      const image = wrap.querySelector('img');
+      image.tabIndex = 0;
+      image.setAttribute('aria-describedby', 'photo-tooltip');
+
+      image.addEventListener('pointerenter', event => {
+        if (event.pointerType !== 'touch') showTooltip(photo, event.clientX, event.clientY);
+      });
+      image.addEventListener('pointermove', event => {
+        if (event.pointerType !== 'touch' && tooltip.getAttribute('aria-hidden') === 'false') {
+          positionTooltip(event.clientX, event.clientY);
+        }
+      });
+      image.addEventListener('pointerleave', event => {
+        if (event.pointerType !== 'touch') hideTooltip();
+      });
+      image.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch') {
+          event.preventDefault();
+          if (tooltip.getAttribute('aria-hidden') === 'false') hideTooltip();
+          else showTooltip(photo, event.clientX, event.clientY);
+        }
+      });
+      image.addEventListener('focus', () => {
+        const rect = image.getBoundingClientRect();
+        showTooltip(photo, rect.left + rect.width / 2, rect.top + Math.min(rect.height / 2, 24));
+      });
+      image.addEventListener('blur', hideTooltip);
+      image.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          hideTooltip();
+          image.blur();
+        }
+      });
+    }
 
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
